@@ -151,7 +151,7 @@ function getFormData() {
 }
 document.addEventListener("DOMContentLoaded", function()
 {
-
+  $('#word').focus();
   $('#word').keypress(function (e) {
     if (e.keyCode == 13 && $('#word').val())
     {
