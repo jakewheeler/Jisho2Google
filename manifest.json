@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+
+  "name": "Jisho2Sheets",
+  "description": "Grabs data from Jisho and imports it into a Google Sheet.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "jisho.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "http://*.jisho.org/",
+    "https://script.google.com/"
+  ]
+}
