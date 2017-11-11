@@ -6,41 +6,37 @@
  -->
 <html>
   <head>
-    <title>Getting Started Extension's Popup</title>
-    <style type="text/css">
-      body {
-        margin: 10px;
-        white-space: nowrap;
-      }
-
-      h1 {
-        font-size: 15px;
-      }
-
-      #container {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-      }
-    </style>
-
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-    -->
+    <title>Jisho2Google</title>
     <script src="jquery-3.2.1.min.js"></script>
     <script src="popup.js"></script>
+    <link rel="stylesheet" href="css/pure.css">
+    <link rel="stylesheet" href="main.css">
   </head>
 
-  <body>
-    <h1>Enter a word:</h1>
-    <form id="gform">
-    <input id="word" name="word" placeholder="Enter a word..."/>
-    <input id="reading" name="reading" disabled="true"/>
-    <input id="definitions" name="definitions" disabled="true"/>
-    <input id="submitButton" type="button" value="Submit"/>
+  <body class="main-form">
+    <h1>Jisho2Google</h1>
+    <h2>Enter a word:</h2>
+    <form id="gform" class="pure-form">
+      <div>
+        <div style="padding-top: 10px">
+              <span class="bold-text" style="padding-right: 35px;">Word</span> 
+              <input id="word" name="word" placeholder="Enter a word..."/>
+        </div>
+        <div style="padding-top: 10px">
+              <span class="bold-text" style="padding-right: 21px;">Reading</span>
+              <input id="reading" name="reading" disabled="true"/>
+        </div>
+        <div style="padding-top: 10px">
+              <span class="bold-text" style="padding-right: 5px;">Definitions</span>
+              <input id="definitions" name="definitions" disabled="true"/>
+        </div>
+        <div style="padding-top: 15px;"">
+              <input class="pure-button" id="submitButton" type="button" value="Submit"/>
+        </div>
+        <div id="successStatus" style=" padding-top: 10px; display: none;">
+          <span id="successLabel" style="color: red;">Error</span>
+        </div>
+    </div>
   </form>
     </body>
 </html>
