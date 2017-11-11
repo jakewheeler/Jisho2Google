@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function()
      // get word from box
     var wordEntered = $('#word').val();
 
-    if (wordEntered)
+    if (wordEntered && localStorage.getItem("sheetScriptUrl"))
     {
       // get all data from API
       var allData = getJishoObject(wordEntered);
