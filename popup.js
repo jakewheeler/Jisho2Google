@@ -1,10 +1,14 @@
 function getJishoObject(word)
 {
+  var newUrl = 'http://jisho.org/api/v1/search/words?keyword=' + encodeURIComponent(word);
   var fData = [];
+
   $.ajax({
-    url: 'http://jisho.org/api/v1/search/words?keyword=' + word,
+    type: "GET",
+    url: newUrl,
     async: false,
     dataType: 'json',
+    contentType: "application/json; charset=UTF-8",
     success: function(data){
       fData = data;
     }
@@ -15,37 +19,51 @@ function getJishoObject(word)
 
 function parseJishoObject(jishoObj)
 {
-  try
-  {
-    var word = jishoObj.data[0].japanese[0].word; // word
-    var reading = jishoObj.data[0].japanese[0].reading; // reading
-    var definitionArray = ""; // all definitions with part of speech
+  var word = null;
+  var reading = null;
+  var definitions = null;
 
-    for (var i = 0; i < jishoObj.data[0].senses.length; i++) {
-      var partOfSpeech = jishoObj.data[0].senses[i].parts_of_speech[0];
-
-      if (typeof partOfSpeech !== "undefined") {
-            definitionArray += "(" + partOfSpeech + ")" + " ";
-      }
-
-      definitionArray += (i + 1) + ". ";
-      for (var j = 0; j < jishoObj.data[0].senses[i].english_definitions.length; j++) {
-
-            definitionArray += jishoObj.data[0].senses[i].english_definitions[j] + "; ";
-      }
+    try {
+          word = jishoObj.data[0].japanese[0].word; // word
+    }catch(err) {
+      console.log("could not read word.");
     }
+
+    try {
+          reading = jishoObj.data[0].japanese[0].reading; // reading
+    }catch(err) {
+      console.log("could not read reading");
+    }
+
+    try {
+
+        var definitionArray = ""; // all definitions with part of speech
+        for (var i = 0; i < jishoObj.data[0].senses.length; i++) {
+        var partOfSpeech = jishoObj.data[0].senses[i].parts_of_speech[0];
+
+        if (typeof partOfSpeech !== "undefined") {
+              definitionArray += "(" + partOfSpeech + ")" + " ";
+        }
+
+        definitionArray += (i + 1) + ". ";
+        for (var j = 0; j < jishoObj.data[0].senses[i].english_definitions.length; j++) {
+
+              definitionArray += jishoObj.data[0].senses[i].english_definitions[j] + "; ";
+        }
+      }
+    }catch(err) {
+      console.log("could not read definitions");
+    }
+
     
     var customObject = {word: word, reading: reading, definitions: definitionArray};
-    console.log(customObject);
+    //console.log (customObject);
+
+    if (customObject.word === undefined) {
+      customObject.word = customObject.reading
+    }
 
     return customObject;
-  }catch(err){
-
-    setToError();
-    return null;
-  }
-
-  
 }
 
 function clearAllElementsData()
@@ -152,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function()
       var data = getFormData();
 
       if (data !== null && data.word && data.reading && data.definitions) {
-        var url = "https://script.google.com/macros/s/AKfycbw_X_Im0yb3UpOqutJ8XXwldjZjSm2GuNjuJMa7_zBnYCle5r6H/exec";
+        var url = localStorage.getItem("sheetScriptUrl");
         var xhr = new XMLHttpRequest();
         xhr.open('POST', url);
         // xhr.withCredentials = true;
@@ -173,5 +191,7 @@ document.addEventListener("DOMContentLoaded", function()
     else {
       setToError();
     }
+
+    clearAllElementsData();
 })
 });

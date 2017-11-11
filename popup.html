@@ -14,19 +14,23 @@
   </head>
 
   <body class="main-form">
-    <h1>Jisho2Google</h1>
-    <h2>Enter a word:</h2>
-    <form id="gform" class="pure-form">
+    <div>
+          <h1 style="float: center; display: inline;">Jisho2Google</h1>
+      <a href="settings_page.html" style="padding-bottom: 10px">
+            <img src="settings_icon.png" style="padding-right: 20px; float: left; display: inline;">
+      </a>
+  </div>
+    <form id="gform" class="pure-form" style="padding-top: 15px">
       <div>
         <div style="padding-top: 10px">
               <span class="bold-text" style="padding-right: 35px;">Word</span> 
               <input id="word" name="word" placeholder="Enter a word..."/>
         </div>
-        <div style="padding-top: 10px">
+        <div style="padding-top: 10px" hidden="true"">
               <span class="bold-text" style="padding-right: 21px;">Reading</span>
               <input id="reading" name="reading" disabled="true"/>
         </div>
-        <div style="padding-top: 10px">
+        <div style="padding-top: 10px" hidden="true">
               <span class="bold-text" style="padding-right: 5px;">Definitions</span>
               <input id="definitions" name="definitions" disabled="true"/>
         </div>

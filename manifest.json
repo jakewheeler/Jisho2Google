@@ -4,6 +4,7 @@
   "name": "Jisho2Sheets",
   "description": "Grabs data from Jisho and imports it into a Google Sheet.",
   "version": "1.0",
+  "options_page" : "settings_page.html",
 
   "browser_action": {
     "default_icon": "jisho.png",
