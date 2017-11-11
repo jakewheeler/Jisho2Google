@@ -149,9 +149,17 @@ function getFormData() {
   //console.log(data);
   return data;
 }
-
 document.addEventListener("DOMContentLoaded", function()
 {
+
+  $('#word').keypress(function (e) {
+    if (e.keyCode == 13 && $('#word').val())
+    {
+      $('#submitButton').click();
+    }
+  });
+
+
   var subButton = document.getElementById('submitButton');
   subButton.addEventListener('click', function()
   {
@@ -169,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function()
 
       var data = getFormData();
 
-      if (data !== null && data.word && data.reading && data.definitions) {
+      if (data !== null && data.word && data.reading && data.definitions && localStorage.getItem("sheetScriptUrl")) {
         var url = localStorage.getItem("sheetScriptUrl");
         var xhr = new XMLHttpRequest();
         xhr.open('POST', url);

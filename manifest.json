@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Jisho2Sheets",
+  "name": "Jisho2Google",
   "description": "Grabs data from Jisho and imports it into a Google Sheet.",
   "version": "1.0",
   "options_page" : "settings_page.html",
