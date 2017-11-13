@@ -3,19 +3,19 @@
 <head>
 	<title>Jisho2Google Settings</title>
 	<script src="jquery-3.2.1.min.js"></script>
-	<link rel="stylesheet" href="css/pure.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
 <body>
 
+<div class="container-fluid">
 Google Sheet Script URL:
-<form  class="pure-form">
-	<div id="urlSubmit">
-		<input type="text" id="scriptUrlBox"/>
-		<button id="settingsSubmitButton" class="pure-button">Submit</button>
-	</div>
-</form>
-
+	<form>
+		<div id="urlSubmit">
+			<input type="text" id="scriptUrlBox"/>
+			<button id="settingsSubmitButton" class="btn">Submit</button>
+		</div>
+	</form>
+</div>
 <script src="settings.js"></script>
 </body>
 </html>

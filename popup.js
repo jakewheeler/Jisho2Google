@@ -60,7 +60,8 @@ function parseJishoObject(jishoObj)
     //console.log (customObject);
 
     if (customObject.word === undefined) {
-      customObject.word = customObject.reading
+      customObject.word = customObject.reading // word is the reading
+      customObject.reading = " "; // no need for reading
     }
 
     return customObject;

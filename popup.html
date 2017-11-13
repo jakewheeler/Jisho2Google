@@ -4,38 +4,33 @@
     <title>Jisho2Google</title>
     <script src="jquery-3.2.1.min.js"></script>
     <script src="popup.js"></script>
-    <link rel="stylesheet" href="css/pure.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   </head>
-
-  <body class="main-form">
-    <div>
-          <h1 style="float: center; display: inline;">Jisho2Google</h1>
-      <a href="settings_page.html" style="padding-bottom: 10px">
-            <img src="img/settings_icon.png" style="padding-right: 20px; float: left; display: inline;">
-      </a>
-  </div>
-    <form id="gform" class="pure-form" style="padding-top: 15px">
+  <body style="min-height: 400px; min-width: 200px">
+    <a href="settings_page.html">
+    <img style="float: left; padding-top: 10px" src="img/settings_icon.png"></a>
+    <h3 style="text-align: center">Jisho2Google</h3>
+    <form id="gform">
       <div>
-        <div style="padding-top: 10px">
-              <span class="bold-text" style="padding-right: 35px;">Word</span> 
-              <input id="word" name="word" placeholder="Enter a word..."/>
+        <div class="form-group">
+          <label for="comment">Words:</label>
+          <textarea class="form-control" name="word" rows="15" id="word"></textarea>
         </div>
-        <div style="padding-top: 10px" hidden="true"">
-              <span class="bold-text" style="padding-right: 21px;">Reading</span>
-              <input id="reading" name="reading" disabled="true"/>
-        </div>
-        <div style="padding-top: 10px" hidden="true">
-              <span class="bold-text" style="padding-right: 5px;">Definitions</span>
-              <input id="definitions" name="definitions" disabled="true"/>
-        </div>
-        <div style="padding-top: 15px;"">
-              <input class="pure-button" id="submitButton" type="button" value="Submit"/>
-        </div>
-        <div id="successStatus" style=" padding-top: 10px; display: none;">
-          <span id="successLabel" style="color: red;">Error</span>
-        </div>
-    </div>
-  </form>
-    </body>
+      </div>
+      <div style="padding-top: 10px; padding-bottom: 10px">
+        <button class="btn" id="submitButton">Submit</button>
+      </div>
+      <div hidden="true">
+            <span class="bold-text"">Reading</span>
+            <input id="reading" name="reading" disabled="true"/>
+      </div>
+      <div hidden="true">
+            <span class="bold-text">Definitions</span>
+            <input id="definitions" name="definitions" disabled="true"/>
+      </div>
+      <div id="successStatus" style="padding-top: 10px; display: none;">
+        <span id="successLabel" style="color: red;">Error</span>
+      </div>
+    </form>
+  </body>
 </html>
