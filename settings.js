@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function()
 {
 
+  setUrlToolTip();
   initializeOptions();
 
   var showReadingWordSame = document.getElementById('show-reading-if-word-same');
@@ -40,6 +41,17 @@ function initializeOptions()
   }
   else {
     $('#show-reading-if-word-same').prop('checked', false).change();
+  }
+
+}
+
+function setUrlToolTip()
+{
+  if (localStorage.getItem('sheetScriptUrl') == null) {
+    $("#settingsUrlToolTip").attr('title', 'Not yet set')
+  }
+  else {
+      $("#settingsUrlToolTip").attr('title', localStorage.getItem('sheetScriptUrl'));
   }
 
 }

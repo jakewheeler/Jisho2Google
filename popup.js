@@ -38,6 +38,7 @@ function parseJishoObject(jishoObj)
     try {
 
         var definitionArray = ""; // all definitions with part of speech
+        var tagsArray=""; // all tags
         for (var i = 0; i < jishoObj.data[0].senses.length; i++) {
         var partOfSpeech = jishoObj.data[0].senses[i].parts_of_speech[0];
 
@@ -52,6 +53,10 @@ function parseJishoObject(jishoObj)
         for (var j = 0; j < jishoObj.data[0].senses[i].english_definitions.length; j++) {
 
               definitionArray += jishoObj.data[0].senses[i].english_definitions[j] + "; ";
+        }
+        for (var k = 0; k < jishoObj.data[0].senses[i].tags.length; k++) {
+          definitionArray = definitionArray.substring(0, definitionArray.length-2);
+          definitionArray += " [" + jishoObj.data[0].senses[i].tags[k] + "] ";
         }
       }
     }catch(err) {
@@ -179,7 +184,6 @@ document.addEventListener("DOMContentLoaded", function()
     var lines = $('#word').val().split('\n');
     for(var i = 0; i < lines.length; i++){
      
-      console.log(lines[i]);
      // get word from box
       var wordEntered = lines[i];
 
