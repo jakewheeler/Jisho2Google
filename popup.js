@@ -61,7 +61,13 @@ function parseJishoObject(jishoObj)
 
     if (customObject.word === undefined) {
       customObject.word = customObject.reading // word is the reading
-      customObject.reading = " "; // no need for reading
+
+      var optionVal = localStorage.getItem('optionShowReadingIfWordSame');
+
+      if (optionVal == 'false') {
+          customObject.reading = " "; // no need for reading
+      }
+
     }
 
     return customObject;
@@ -150,6 +156,7 @@ function getFormData() {
   //console.log(data);
   return data;
 }
+
 document.addEventListener("DOMContentLoaded", function()
 {
   $('#word').focus();

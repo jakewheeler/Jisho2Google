@@ -1,3 +1,21 @@
+document.addEventListener("DOMContentLoaded", function()
+{
+
+  initializeOptions();
+
+  var showReadingWordSame = document.getElementById('show-reading-if-word-same');
+  showReadingWordSame.addEventListener('click', function()
+  {
+    if (showReadingWordSame.checked) {
+
+      localStorage.setItem('optionShowReadingIfWordSame', true);
+    }
+    else {
+      localStorage.setItem('optionShowReadingIfWordSame', false);
+    }
+  });
+});
+
 var settingsSubmitButton = document.getElementById('settingsSubmitButton');
 settingsSubmitButton.addEventListener('click', function()
 {
@@ -7,3 +25,23 @@ settingsSubmitButton.addEventListener('click', function()
       localStorage.setItem('sheetScriptUrl', $enteredURL);
   }
 });
+
+function initializeOptions()
+{
+
+  var optionVal = localStorage.getItem('optionShowReadingIfWordSame');
+  console.log(optionVal);
+
+  if (optionVal == null) {
+    $('#show-reading-if-word-same').prop('checked', true).change();
+    localStorage.setItem('optionShowReadingIfWordSame', true);
+  }
+  else if (optionVal == 'true') {
+    $('#show-reading-if-word-same').prop('checked', true).change();
+    console.log('k');
+  }
+  else {
+    $('#show-reading-if-word-same').prop('checked', false).change();
+  }
+
+}

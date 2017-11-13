@@ -3,19 +3,23 @@
 <head>
 	<title>Jisho2Google Settings</title>
 	<script src="jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
 <body>
-
-<div class="container-fluid">
-Google Sheet Script URL:
+	<label style="font-weight: bold"> Google Sheet Script URL:</label>
 	<form>
 		<div id="urlSubmit">
 			<input type="text" id="scriptUrlBox"/>
 			<button id="settingsSubmitButton" class="btn">Submit</button>
 		</div>
 	</form>
-</div>
+	<div id="checkbox-group">
+		<label style="font-weight: bold">Options</label>
+		<div class="checkbox">
+		  <label><input type="checkbox" value="" id="show-reading-if-word-same">Show reading if word is the same</label>
+		</div>
+	</div>
 <script src="settings.js"></script>
 </body>
 </html>
