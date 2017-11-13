@@ -42,7 +42,10 @@ function parseJishoObject(jishoObj)
         var partOfSpeech = jishoObj.data[0].senses[i].parts_of_speech[0];
 
         if (typeof partOfSpeech !== "undefined") {
-              definitionArray += "(" + partOfSpeech + ")" + " ";
+          if(!partOfSpeech.includes("Wikipedia")) {
+             definitionArray += "(" + partOfSpeech + ")" + " ";
+          }
+
         }
 
         definitionArray += (i + 1) + ". ";
@@ -107,7 +110,7 @@ function fillInElementsWithData(parsedObject) {
       $('#reading').val(parsedObject.reading);
       $('#definitions').val(parsedObject.definitions);
   } catch(err) {
-    setToError();
+    
   }
 }
 
@@ -171,43 +174,43 @@ document.addEventListener("DOMContentLoaded", function()
   var subButton = document.getElementById('submitButton');
   subButton.addEventListener('click', function()
   {
+
+    // get each line in box
+    var lines = $('#word').val().split('\n');
+    for(var i = 0; i < lines.length; i++){
+     
+      console.log(lines[i]);
      // get word from box
-    var wordEntered = $('#word').val();
+      var wordEntered = lines[i];
 
-    if (wordEntered && localStorage.getItem("sheetScriptUrl"))
-    {
-      // get all data from API
-      var allData = getJishoObject(wordEntered);
-      
-      var parsedObject = parseJishoObject(allData);
-      
-      fillInElementsWithData(parsedObject);
+      if (wordEntered && localStorage.getItem("sheetScriptUrl"))
+      {
+        // get all data from API
+        var allData = getJishoObject(wordEntered);
+        
+        var parsedObject = parseJishoObject(allData);
+        
+        fillInElementsWithData(parsedObject);
 
-      var data = getFormData();
+        var data = getFormData();
 
-      if (data !== null && data.word && data.reading && data.definitions && localStorage.getItem("sheetScriptUrl")) {
-        var url = localStorage.getItem("sheetScriptUrl");
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', url);
-        // xhr.withCredentials = true;
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        if (data !== null && data.word && data.reading && data.definitions && localStorage.getItem("sheetScriptUrl")) {
+          var url = localStorage.getItem("sheetScriptUrl");
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', url, false);
+          // xhr.withCredentials = true;
+          xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-        // url encode form data for sending as post data
-        var encoded = Object.keys(data).map(function(k) {
-            return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-        }).join('&')
-        xhr.send(encoded);
-
-        setToSuccess();
+          // url encode form data for sending as post data
+          var encoded = Object.keys(data).map(function(k) {
+              return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+          }).join('&')
+          xhr.send(encoded);
+        }
       }
-      else {
-        setToError();
-      }
-    }
-    else {
-      setToError();
-    }
 
-    clearAllElementsData();
+
+      clearAllElementsData();
+  }
 })
 });

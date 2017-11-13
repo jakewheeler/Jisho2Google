@@ -30,7 +30,6 @@ function initializeOptions()
 {
 
   var optionVal = localStorage.getItem('optionShowReadingIfWordSame');
-  console.log(optionVal);
 
   if (optionVal == null) {
     $('#show-reading-if-word-same').prop('checked', true).change();
@@ -38,7 +37,6 @@ function initializeOptions()
   }
   else if (optionVal == 'true') {
     $('#show-reading-if-word-same').prop('checked', true).change();
-    console.log('k');
   }
   else {
     $('#show-reading-if-word-same').prop('checked', false).change();
