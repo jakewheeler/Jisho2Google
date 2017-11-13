@@ -88,27 +88,6 @@ function clearAllElementsData()
   $('#definitions').val("");
 }
 
-function setToSuccess()
-{
-  $('#successLabel').css("color", "green");
-  $('#successLabel').html("Success");
-  $('#successStatus').show();
-  fadeSuccessStatus();
-}
-
-function setToError()
-{
-  $('#successLabel').css("color", "red");
-  $('#successLabel').html("Error updating spreadsheet");
-  $('#successStatus').show();
-  fadeSuccessStatus();
-}
-
-function fadeSuccessStatus()
-{
-  $('#successStatus').fadeOut(3000);
-}
-
 function fillInElementsWithData(parsedObject) {
   try {
       $('#word').val(parsedObject.word);
