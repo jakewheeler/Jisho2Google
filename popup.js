@@ -167,14 +167,6 @@ function getFormData() {
 
 document.addEventListener("DOMContentLoaded", function()
 {
-  $('#word').focus();
-  $('#word').keypress(function (e) {
-    if (e.keyCode == 13 && $('#word').val())
-    {
-      $('#submitButton').click();
-    }
-  });
-
 
   var subButton = document.getElementById('submitButton');
   subButton.addEventListener('click', function()
