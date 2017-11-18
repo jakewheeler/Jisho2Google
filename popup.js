@@ -63,7 +63,7 @@ function parseJishoObject(jishoObj)
       console.log("could not read definitions");
     }
 
-    
+    definitionArray = definitionArray.substring(0, definitionArray.length-2); // remove ending semi-colon
     var customObject = {word: word, reading: reading, definitions: definitionArray};
     //console.log (customObject);
 
