@@ -62,6 +62,5 @@ function addListenerToBackButton()
   bkButton.addEventListener('click', function()
   {
     document.location.href = 'popup.html';
-    console.log("back");
   });
 }
