@@ -144,8 +144,19 @@ function getFormData() {
   return data;
 }
 
+function registerHelpLink()
+{
+  var helpLink = document.getElementById('helpLink');
+  helpLink.addEventListener('click', function()
+  {
+    var location = "https://docs.google.com/document/d/1eG7Cb7ddWQqokGo6XyMO1vQ2ruC0wcY8HihdbXlPCW8/edit?usp=sharing";
+    chrome.tabs.create({active: true, url: location});
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function()
 {
+  registerHelpLink();
 
   var subButton = document.getElementById('submitButton');
   subButton.addEventListener('click', function()
