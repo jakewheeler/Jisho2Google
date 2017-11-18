@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function()
 {
-
+  addListenerToBackButton();
   setUrlToolTip();
   initializeOptions();
 
@@ -54,4 +54,14 @@ function setUrlToolTip()
       $("#settingsUrlToolTip").attr('title', localStorage.getItem('sheetScriptUrl'));
   }
 
+}
+
+function addListenerToBackButton()
+{
+  var bkButton = document.getElementById('settingsBackButton');
+  bkButton.addEventListener('click', function()
+  {
+    document.location.href = 'popup.html';
+    console.log("back");
+  });
 }
